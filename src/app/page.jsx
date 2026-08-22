@@ -1,6 +1,10 @@
+import BeyondTheCourt from "@/components/home/BeyondTheCourt";
 import Hero from "@/components/home/Hero";
 import InfiniteMarqueeSection from "@/components/home/InfiniteMarqueeSection";
+import InvitationForm from "@/components/home/InvitationForm";
+import Lable from "@/components/home/Lable";
 import PadelTrail from "@/components/home/PadelTrail";
+import Win from "@/components/home/Win";
 import { createPageMetadata } from "@/lib/seo";
 
 const HomePage = () => {
@@ -9,6 +13,10 @@ const HomePage = () => {
     <Hero />
     <InfiniteMarqueeSection />
     <PadelTrail />
+    <BeyondTheCourt/>
+    <Win />
+    <InvitationForm />
+    <Lable/>
     </>
   );
 };
