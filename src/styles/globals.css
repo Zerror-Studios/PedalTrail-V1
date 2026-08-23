@@ -90,38 +90,41 @@ button {
   font-family: 'Inter';
 }
 
+/*
+  Fluid typography: these tags are used bare (no Tailwind text-size classes)
+  throughout the components, so scaling them with clamp() is what makes every
+  section responsive without having to override each heading individually.
+*/
 
 h1{
-  font-size: 7rem;
-  line-height: 7rem;
-
+  font-size: clamp(2.75rem, 9vw, 7rem);
+  line-height: clamp(3rem, 9.5vw, 7rem);
 }
 
 h3{
-font-size: 4rem;
-  line-height: 4rem;
-
+  font-size: clamp(2rem, 7vw, 4rem);
+  line-height: clamp(2.25rem, 7.5vw, 4rem);
 }
 
 h4{
-  font-size: 2.5rem;
-  line-height: 2.5rem;
+  font-size: clamp(1.5rem, 5vw, 2.5rem);
+  line-height: clamp(1.75rem, 5.5vw, 2.5rem);
 }
 h5{
-  font-size: 2rem;
-  line-height: 2rem;
+  font-size: clamp(1.25rem, 4vw, 2rem);
+  line-height: clamp(1.5rem, 4.5vw, 2rem);
 }
 
 
 
 p{
    font-size: 1rem;
-   line-height: 1.1rem;
+   line-height: 1.5rem;
 }
 
 span{
-  font-size: 0.7rem;
-  line-height: 0.8rem;
+  font-size: 0.75rem;
+  line-height: 1rem;
 }
 
 
