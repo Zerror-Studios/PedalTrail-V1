@@ -67,6 +67,7 @@
 import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import AnimatedTitle from '../common/AnimatedTitle';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -113,8 +114,8 @@ const Lable = () => {
           </div>
         </div>
 
-        <div className='w-full sm:w-fit h-fit px-8 sm:px-20 text-white bg-[#FE2115] py-4 sm:py-5 mt-8 sm:mt-10 cursor-pointer text-center'>
-          <p className='Inter uppercase'>Request for invitation</p>
+        <div className='w-full sm:w-fit h-fit px-8 sm:px-20 text-white bg-[#FE2115] hover:bg-[#9e1008] py-4 sm:py-5 mt-8 sm:mt-10 cursor-pointer text-center'>
+      <p className='Inter uppercase'>Request for invitation</p>
         </div>
 
         <p className='NeueM text-[black]/40 mt-5'>Applications Reviewed Privately</p>

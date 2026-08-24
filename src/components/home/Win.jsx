@@ -176,10 +176,10 @@ const Win = () => {
   }, []);
 
   return (
-    <div ref={containerRefON} className="w-full h-fit p-5 sm:p-8 md:p-10 overflow-hidden">
+    <div ref={containerRefON} className="w-full h-fit p-5 sm:p-8 md:p-10 max-sm:mt-10 overflow-hidden">
       <div className="w-full h-fit flex flex-col">
         <h3 className="NeueM uppercase">WIN YOUR WAY BACK.</h3>
-        <p className="Inter mt-5 max-w-sm text-neutral-400">
+        <p className="Inter mt-5 max-w-sm ">
           The Trail is designed to seamlessly blend intense competition with
           world-class hospitality and cultural immersion.
         </p>
@@ -191,7 +191,7 @@ const Win = () => {
             <div
               key={i}
               ref={(el) => (cardsRefJO.current[i] = el)}
-              className="w-full aspect-5/4 sm:aspect-5/4 overflow-hidden relative group cursor-pointer will-change-transform rounded-md"
+              className="w-full aspect-5/4 sm:aspect-5/4 overflow-hidden relative group cursor-pointer will-change-transform "
             >
               {/* Background Image with Hover Scale */}
               <img

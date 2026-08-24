@@ -211,7 +211,7 @@ const PadelTrail = () => {
         className="w-[90%] sm:w-[95%] h-fit lg:h-[95vh] mt-[12vh] sm:mt-[16vh] lg:mt-[20vh] z-10 mx-auto relative py-10 sm:py-12 lg:py-[13vh] px-6 sm:px-8 lg:px-[5vw] will-change-transform"
       >
         {/* BlackDrop */}
-        <div className="w-full h-full absolute top-0 left-0 bg-black/70 backdrop-blur-md z-[-1]" />
+        <div className="w-full h-full absolute top-0 left-0 bg-black/40 backdrop-blur-md z-[-1]" />
 
         {/* Top */}
         <div className="w-full flex flex-col lg:flex-row lg:h-[60%] gap-10 lg:gap-0">

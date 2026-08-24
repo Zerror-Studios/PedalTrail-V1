@@ -147,10 +147,10 @@ export default function InfiniteMarqueeSection() {
   return (
     <section className="bg-white text-black min-h-screen py-12 sm:py-16 overflow-hidden flex flex-col justify-between gap-[10vh] sm:gap-[15vh] md:gap-[20vh] pt-[8vh] sm:pt-[10vh]">
       <div className="px-5 md:px-10 flex flex-col gap-5">
-        <h3 className="NeueM  ">
-          COME FOR THE GAME. <span className=" text-[#6E6E6E]">STAY </span>
-          <br /> <span className=" text-[#6E6E6E]">FOR EVERYTHING ELSE.</span>
-        </h3>
+        <div className="NeueM  ">
+          <h3>COME FOR THE GAME. STAY </h3>
+          <h3 className="text-[#2e2e2e]">FOR EVERYTHING ELSE.</h3>
+        </div>
         <p className="Inter font-light! capitalize max-w-2xl">
           We believe padel is more than just a sport; it's a vehicle for <br className="hidden md:block" />
           connection, travel, and unforgettable experiences. The Trail is <br className="hidden md:block" />
