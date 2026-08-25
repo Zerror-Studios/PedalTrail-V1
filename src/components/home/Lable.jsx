@@ -114,7 +114,7 @@ const Lable = () => {
           </div>
         </div>
 
-        <div className='w-full sm:w-fit h-fit px-8 sm:px-20 text-white bg-[#FE2115] hover:bg-[#9e1008] py-4 sm:py-5 mt-8 sm:mt-10 cursor-pointer text-center'>
+        <div className='w-full sm:w-fit h-fit px-8 sm:px-20 text-white bg-[#FF6D35] hover:bg-[#e65a23] py-4 sm:py-5 mt-8 sm:mt-10 cursor-pointer text-center'>
       <p className='Inter uppercase'>Request for invitation</p>
         </div>
 

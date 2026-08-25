@@ -376,7 +376,7 @@ const BeyondTheCourt = () => {
   return (
     <div
       ref={containerRef}
-      className="w-full min-h-fit lg:min-h-screen grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 lg:grid-rows-2 p-5 sm:p-8 md:p-10 gap-6 sm:gap-8 md:gap-10 pt-[8vh] lg:pt-[10vh]"
+      className="w-full min-h-fit BGLIGHTBLUE lg:min-h-screen grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 lg:grid-rows-2 p-5 sm:p-8 md:p-10 gap-6 sm:gap-8 md:gap-10 pt-[8vh] lg:pt-[10vh]"
     >
       {/* Title Box */}
       <div ref={(el) => (itemsRef.current[0] = el)}>

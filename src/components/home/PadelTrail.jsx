@@ -80,40 +80,40 @@
 //           <div className="h-full w-[50%] flex flex-col gap-10">
 //             {/* 1 */}
 //             <div className="w-fit h-fit flex flex-col gap-5">
-//               <span className="text-[0.7rem] leading-[0.7rem] uppercase text-white">
+//               <span className="text-[0.7rem] leading-[0.7rem] uppercase TXTBLUE">
 //                 COMPOSITION
 //               </span>
-//               <h5 className="NeueM text-white">16 men / 16 women / 16 pairs</h5>
+//               <h5 className="NeueM TXTBLUE">16 men / 16 women / 16 pairs</h5>
 //             </div>
 
 //             {/* 2 */}
 //             <div className="w-fit h-fit flex flex-col gap-5">
-//               <span className="text-[0.7rem] leading-[0.7rem] uppercase text-white">
+//               <span className="text-[0.7rem] leading-[0.7rem] uppercase TXTBLUE">
 //                 STANDARD
 //               </span>
-//               <h5 className="NeueM text-white">LEVEL 3.25 - 4</h5>
+//               <h5 className="NeueM TXTBLUE">LEVEL 3.25 - 4</h5>
 //             </div>
 
 //             {/* 3 */}
 //             <div className="w-fit h-fit flex flex-col gap-5">
-//               <span className="text-[0.7rem] leading-[0.7rem] uppercase text-white">
+//               <span className="text-[0.7rem] leading-[0.7rem] uppercase TXTBLUE">
 //                 SELECTION
 //               </span>
-//               <h5 className="NeueM text-white">APPLICATION & REVIEW</h5>
+//               <h5 className="NeueM TXTBLUE">APPLICATION & REVIEW</h5>
 //             </div>
 //           </div>
 
 //           {/* Right */}
 //           <div className="h-full w-[50%] flex flex-col justify-start items-end">
 //             <div>
-//               <h1 className="NeueM text-white">32</h1>
-//               <h4 className="NeueM text-white">PLAYERS</h4>
+//               <h1 className="NeueM TXTBLUE">32</h1>
+//               <h4 className="NeueM TXTBLUE">PLAYERS</h4>
 //             </div>
 //           </div>
 //         </div>
 
 //         {/* Bottom */}
-//         <div className="w-full h-[40%] flex justify-start items-end text-white/80">
+//         <div className="w-full h-[40%] flex justify-start items-end TXTBLUE/80">
 //           <h4 className="NeueM">
 //             A private, invitation-only experience <br /> combining padel, competition,
 //             travel and <br /> exceptional experiences across Spain.
@@ -123,7 +123,7 @@
 
 //       {/* Middle */}
 //       <div className="px-10 mt-10">
-//         <h3 className="NeueM uppercase text-white">
+//         <h3 className="NeueM uppercase TXTBLUE">
 //           the format makes the <br /> trail
 //         </h3>
 //       </div>
@@ -192,7 +192,7 @@ const PadelTrail = () => {
   }, []);
 
   return (
-    <div ref={containerRef} className="w-full min-h-[200vh] relative overflow-hidden flex flex-col">
+    <div ref={containerRef} className="w-full h-fit relative overflow-hidden flex flex-col">
       {/* 
         Note: `scale-[1.3]` prevents empty white space from appearing at edges during parallax scroll.
         `inset-0` (instead of a fixed h-full) keeps the image covering the whole
@@ -200,7 +200,7 @@ const PadelTrail = () => {
       */}
       <img
         ref={imageRef}
-        src="/images/home/PL.png"
+        src="/images/home/PLP.png"
         alt="IMG"
         className="w-full h-full object-cover object-center absolute inset-0 -z-1 scale-[1.3]"
       />
@@ -208,10 +208,10 @@ const PadelTrail = () => {
       {/* First-Cont */}
       <div 
         ref={firstContRef}
-        className="w-[90%] sm:w-[95%] h-fit lg:h-[95vh] mt-[12vh] sm:mt-[16vh] lg:mt-[20vh] z-10 mx-auto relative py-10 sm:py-12 lg:py-[13vh] px-6 sm:px-8 lg:px-[5vw] will-change-transform"
+        className="w-[90%] sm:w-[95%] h-fit  mt-[12vh] sm:mt-[16vh] lg:mt-[10vh] z-10 mx-auto relative py-10 sm:py-12 lg:py-[13vh] px-6 sm:px-8 lg:px-[5vw] will-change-transform"
       >
         {/* BlackDrop */}
-        <div className="w-full h-full absolute top-0 left-0 bg-black/40 backdrop-blur-md z-[-1]" />
+        <div className="w-full h-full absolute top-0 left-0 bg-white backdrop-blur-md z-[-1]" />
 
         {/* Top */}
         <div className="w-full flex flex-col lg:flex-row lg:h-[60%] gap-10 lg:gap-0">
@@ -219,55 +219,58 @@ const PadelTrail = () => {
           <div className="w-full lg:w-[50%] flex flex-col gap-6 sm:gap-8 lg:gap-10">
             {/* 1 */}
             <div className="w-fit h-fit flex flex-col gap-3 sm:gap-5">
-              <span className="text-[0.7rem] leading-[0.7rem] uppercase text-white">
+              <span className="text-[0.7rem] leading-[0.7rem] uppercase TXTBLACK">
                 COMPOSITION
               </span>
-              <h5 className="NeueM text-white">16 men / 16 women / 16 pairs</h5>
+              <h5 className="NeueM TXTBLUE">16 men / 16 women / 16 pairs</h5>
             </div>
 
             {/* 2 */}
             <div className="w-fit h-fit flex flex-col gap-3 sm:gap-5">
-              <span className="text-[0.7rem] leading-[0.7rem] uppercase text-white">
+              <span className="text-[0.7rem] leading-[0.7rem] uppercase TXTBLACK">
                 STANDARD
               </span>
-              <h5 className="NeueM text-white">LEVEL 3.25 - 4</h5>
+              <h5 className="NeueM TXTBLUE">LEVEL 3.25 - 4</h5>
             </div>
 
             {/* 3 */}
             <div className="w-fit h-fit flex flex-col gap-3 sm:gap-5">
-              <span className="text-[0.7rem] leading-[0.7rem] uppercase text-white">
+              <span className="text-[0.7rem] leading-[0.7rem] uppercase TXTBLACK">
                 SELECTION
               </span>
-              <h5 className="NeueM text-white">APPLICATION & REVIEW</h5>
+              <h5 className="NeueM TXTBLUE">APPLICATION & REVIEW</h5>
             </div>
           </div>
 
           {/* Right */}
           <div className="w-full lg:w-[50%] flex flex-col items-start lg:justify-start lg:items-end">
             <div>
-              <h1 className="NeueM text-white">32</h1>
-              <h4 className="NeueM text-white">PLAYERS</h4>
+              <h1 className="NeueM TXTBLUE">32</h1>
+              <h4 className="NeueM TXTBLUE">PLAYERS</h4>
             </div>
           </div>
         </div>
 
+      </div>
         {/* Bottom */}
-        <div className="w-full lg:h-[40%] flex justify-start items-end text-white/80 mt-10 lg:mt-0">
-          <h4 className="NeueM">
+        <div className="w-full lg:h-[40%] flex justify-start items-end  TXTBLUE/80 mt-[10vh] px-5 sm:px-10 ">
+          <h4 className="NeueM text-white">
             A private, invitation-only experience <br className="hidden lg:block" /> combining padel, competition,
             travel and <br className="hidden lg:block" /> exceptional experiences across Spain.
           </h4>
         </div>
-      </div>
+
+      <div className="bg-white w-full mt-[15vh]">
 
       {/* Middle */}
-      <div className="px-6 sm:px-10 mt-10">
-        <h3 className="NeueM uppercase text-white">
-          the format makes the <br className="hidden sm:block" /> trail
+      <div className="px-6 sm:px-10 mt-10 pb-20 ">
+        <h3 className="NeueM uppercase TXTBLUE">
+          the format <br className="hidden sm:block" /> makes the  trail
         </h3>
       </div>
 
       <FeaturesGridSection />
+      </div>
     </div>
   );
 };

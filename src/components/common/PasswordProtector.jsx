@@ -26,14 +26,14 @@ export default function PasswordProtector({ children }) {
   }
 
   return (
-    <main className="min-h-svh w-full overflow-hidden bg-black text-white relative">
+    <main className="min-h-svh w-full overflow-hidden bg-[ECF8FF] text-white relative">
       <img
         src="/images/home/HeroBG.png"
         alt=""
         className="absolute inset-0 h-full w-full object-cover object-top opacity-70"
       />
       <div className="absolute inset-0 bg-black/45" />
-      <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black via-black/70 to-transparent" />
+      <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-[#0987D8] via-[black/70] to-transparent" />
 
       <div className="relative z-10 flex min-h-svh w-full flex-col px-5 py-5 sm:px-10 sm:py-8">
         <header className="flex items-center justify-between">
@@ -63,7 +63,7 @@ export default function PasswordProtector({ children }) {
 
             <form
               onSubmit={handleSubmit}
-              className="w-full border border-white/20 bg-black/45 p-5 backdrop-blur-md sm:p-6"
+              className="w-full border border-white/20 bg-[#0987D8] p-5 backdrop-blur-md sm:p-6"
             >
               <div className="mb-8 flex items-start justify-between gap-6">
                 <div>
@@ -75,7 +75,7 @@ export default function PasswordProtector({ children }) {
                   </h5>
                 </div>
 
-                <span className="RedBG Inter px-3 py-2 text-[0.65rem] uppercase leading-[0.65rem] text-white">
+                <span className="bg-[#FF6000] Inter px-3 py-2 text-[0.65rem] uppercase leading-[0.65rem] text-white">
                   Members
                 </span>
               </div>
@@ -97,12 +97,12 @@ export default function PasswordProtector({ children }) {
                 placeholder="Enter access code"
                 required
                 autoFocus
-                className="Inter w-full border-b border-white/30 bg-transparent pb-3 text-base text-white outline-none transition-colors placeholder:text-white/35 focus:border-[#FE2115]"
+                className="Inter w-full border-b border-white/30 bg-transparent pb-3 text-base text-white outline-none transition-colors placeholder:text-white/35 focus:border-[#FF6000]"
               />
 
               <div className="mt-3 min-h-5">
                 {error ? (
-                  <p className="Inter text-sm leading-5 text-[#FE2115]">
+                  <p className="Inter text-sm leading-5 text-[#FF6000]">
                     {error}
                   </p>
                 ) : (
@@ -116,10 +116,10 @@ export default function PasswordProtector({ children }) {
                 type="submit"
                 className="group mt-8 flex w-full items-stretch gap-1.5"
               >
-                <span className="RedBG Inter flex min-h-12 flex-1 items-center justify-center px-5 text-[0.75rem] uppercase leading-[0.75rem] text-white transition-colors group-hover:bg-[#a0120b]">
+                <span className="bg-[#FF6000] Inter flex min-h-12 flex-1 items-center justify-center px-5 text-[0.75rem] uppercase leading-[0.75rem] text-white transition-colors group-hover:bg-[#FF6000]">
                   Unlock Trail
                 </span>
-                <span className="RedBG flex aspect-square min-h-12 items-center justify-center transition-colors group-hover:bg-[#e0190e]">
+                <span className="bg-[#FF6000] flex aspect-square min-h-12 items-center justify-center transition-colors group-hover:bg-[#FF6000]">
                   <img
                     src="/svg/Arrow.svg"
                     alt=""

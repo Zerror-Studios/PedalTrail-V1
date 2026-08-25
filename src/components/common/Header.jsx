@@ -49,10 +49,10 @@ const Header = () => {
         
         {/* Desktop BTN */}
         <div className="hidden md:flex w-fit h-fit gap-1.5 z-10 transition-all duration-150 ease-in group cursor-pointer">
-          <div className="uppercase RedBG h-auto w-fit px-5  text-white group-hover:bg-[#e0190e] flex justify-center items-center relative">
+          <div className="uppercase  h-auto w-fit px-5  text-white bg-[#FF6D35] flex justify-center items-center relative">
             <span className=" z-20 text-[0.7rem] leading-[0.7rem]"> <AnimatedTitle text={'Request An Invitation'} /> </span>
           </div>
-          <div className="w-7 aspect-square RedBG flex justify-center items-center transition-all duration-150 ease-in ">
+          <div className="w-7 aspect-square bg-[#FF6D35] flex justify-center items-center transition-all duration-150 ease-in ">
             <img
               src="/svg/Arrow.svg"
               alt="Arrow"
@@ -84,7 +84,7 @@ const Header = () => {
 
       {/* Mobile Fullscreen Overlay Menu */}
       <div
-        className={`fixed top-0 left-0 w-full h-[100dvh] bg-black z-50 flex md:hidden flex-col justify-between px-6 pt-24 pb-10 transition-opacity duration-500 ease-in-out ${
+        className={`fixed top-0 left-0 w-full h-[100dvh] bg-[#0987D8] z-50 flex md:hidden flex-col justify-between px-6 pt-24 pb-10 transition-opacity duration-500 ease-in-out ${
           isOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         }`}
       >
@@ -114,10 +114,10 @@ const Header = () => {
           style={{ transitionDelay: isOpen ? `${NavLinks.length * 70 + 200}ms` : "0ms" }}
           onClick={() => setIsOpen(false)}
         >
-          <div className="uppercase RedBG flex-1 h-12 text-white flex justify-center items-center">
+          <div className="uppercase bg-[#FF6D35] flex-1 h-12 text-white flex justify-center items-center">
             <span className="text-[0.75rem]">Request An Invitation</span>
           </div>
-          <div className="w-12 aspect-square RedBG flex justify-center items-center">
+          <div className="w-12 aspect-square bg-[#FF6D35] flex justify-center items-center">
             <img src="/svg/Arrow.svg" alt="Arrow" className="h-[45%] object-center object-cover" />
           </div>
         </div>

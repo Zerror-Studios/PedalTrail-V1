@@ -77,14 +77,21 @@ button {
   font-style: normal;
 }
 
+@font-face {
+  font-family: CS;
+  src: url('/fonts/CS.otf') format('truetype');
+  font-weight: 100;
+  font-style: normal;
+}
+
 .NeueR{
-  font-family: 'NeueR';
+   font-family: CS;
 }
 .NeueB{
-  font-family: 'NeueB';
+   font-family: CS;
 }
 .NeueM{
-  font-family: 'NeueM';
+   font-family: CS;
 }
 .Inter{
   font-family: 'Inter';
@@ -132,4 +139,20 @@ span{
 
 .RedBG{
   background-color: #FE2115;
+}
+
+.TXTBLUE{
+  color: #0076C2;
+}
+.BGBLUE{
+  background-color: #0076C2;
+}
+.BGLIGHTBLUE{
+  background-color: #ECF8FF;
+}
+.BGORG{
+  background-color: #FF6000;
+}
+.TXTBLACK{
+  color: 2E2E2E;
 }

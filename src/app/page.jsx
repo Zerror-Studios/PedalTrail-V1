@@ -1,5 +1,6 @@
 import PasswordProtector from "@/components/common/PasswordProtector";
 import BeyondTheCourt from "@/components/home/BeyondTheCourt";
+import DetailSection from "@/components/home/DetailSection";
 import Hero from "@/components/home/Hero";
 import InfiniteMarqueeSection from "@/components/home/InfiniteMarqueeSection";
 import InvitationForm from "@/components/home/InvitationForm";
@@ -18,7 +19,8 @@ const HomePage = () => {
         <BeyondTheCourt />
         <Win />
         <InvitationForm />
-        <Lable />
+        {/* <Lable /> */}
+        <DetailSection />
       
     </>
   );

@@ -2155,7 +2155,7 @@ export default function InvitationForm() {
   const lineStyle = {
     fill: 'none',
     stroke: '#d1d5db',
-    strokeWidth: 4,
+    strokeWidth: 1,
     strokeDasharray: 1,
     strokeDashoffset: 1,
   };
@@ -2183,7 +2183,7 @@ export default function InvitationForm() {
         <rect x="50" y="50" width="400" height="1100" pathLength="1" className="court-line" style={lineStyle} />
         <line x1="100" y1="50" x2="100" y2="1150" pathLength="1" className="court-line" style={lineStyle} />
         <line x1="400" y1="50" x2="400" y2="1150" pathLength="1" className="court-line" style={lineStyle} />
-        <line x1="20" y1="600" x2="480" y2="600" pathLength="1" className="court-line" style={{ ...lineStyle, strokeWidth: 6, stroke: '#9ca3af' }} />
+        <line x1="20" y1="600" x2="480" y2="600" pathLength="1" className="court-line" style={{ ...lineStyle, strokeWidth: 1, stroke: '#9ca3af' }} />
         <line x1="100" y1="325" x2="400" y2="325" pathLength="1" className="court-line" style={lineStyle} />
         <line x1="100" y1="875" x2="400" y2="875" pathLength="1" className="court-line" style={lineStyle} />
         <line x1="250" y1="325" x2="250" y2="875" pathLength="1" className="court-line" style={lineStyle} />
@@ -2194,7 +2194,7 @@ export default function InvitationForm() {
         <rect x="50" y="50" width="900" height="500" pathLength="1" className="court-line" style={lineStyle} />
         <line x1="50" y1="125" x2="950" y2="125" pathLength="1" className="court-line" style={lineStyle} />
         <line x1="50" y1="475" x2="950" y2="475" pathLength="1" className="court-line" style={lineStyle} />
-        <line x1="500" y1="20" x2="500" y2="580" pathLength="1" className="court-line" style={{ ...lineStyle, strokeWidth: 6, stroke: '#9ca3af' }} />
+        <line x1="500" y1="20" x2="500" y2="580" pathLength="1" className="court-line" style={{ ...lineStyle, strokeWidth: 1, stroke: '#9ca3af' }} />
         <line x1="275" y1="125" x2="275" y2="475" pathLength="1" className="court-line" style={lineStyle} />
         <line x1="725" y1="125" x2="725" y2="475" pathLength="1" className="court-line" style={lineStyle} />
         <line x1="275" y1="300" x2="725" y2="300" pathLength="1" className="court-line" style={lineStyle} />
@@ -2205,13 +2205,13 @@ export default function InvitationForm() {
       {/* Form Container: Now strictly 80vh and a flex column */}
       <div
         ref={formBoxRef}
-        className="relative z-10 w-full max-w-2xl bg-white/90 backdrop-blur-md border border-gray-200 opacity-0 shadow-2xl rounded-sm flex flex-col h-fit"
+        className="relative z-10 w-full max-w-2xl bg-white/10 backdrop-blur-sm border border-gray-200 opacity-0  rounded-sm flex flex-col h-fit"
       >
         
         {/* Header and Step Indicator (Fixed at Top) */}
         <div className="p-6 md:p-8 pb-4 flex-shrink-0 flex flex-col sm:flex-row justify-between items-start sm:items-center border-b border-gray-100 gap-4">
           <div>
-            <h5 className="font-bold text-red-600 mb-1 tracking-wide text-sm md:text-base">APPLY FOR AN INVITATION</h5>
+            <h5 className="font-bold text-[#FF6D35] mb-1 tracking-wide text-sm md:text-base">APPLY FOR AN INVITATION</h5>
             <p className="text-gray-500 text-xs">Book Your Trial And Get On Court.</p>
           </div>
           
@@ -2221,8 +2221,8 @@ export default function InvitationForm() {
               <React.Fragment key={num}>
                 <div 
                   className={`flex items-center justify-center w-6 h-6 md:w-7 md:h-7 rounded-full text-[10px] md:text-xs font-bold transition-all duration-300 ${
-                    step === num ? 'bg-red-600 text-white shadow-md scale-110' : 
-                    step > num ? 'bg-red-100 text-red-600' : 'bg-gray-100 text-gray-400'
+                    step === num ? 'bg-[#FF6D35] text-white shadow-md scale-110' : 
+                    step > num ? 'bg-red-100 text-[#FF6D35]' : 'bg-gray-100 text-gray-400'
                   }`}
                 >
                   {num}
@@ -2247,7 +2247,7 @@ export default function InvitationForm() {
                     <input
                       type="text" name="firstName" placeholder="First name" required
                       value={formData.firstName} onChange={handleChange}
-                      className="w-full bg-transparent border-b border-gray-300 pb-1.5 text-sm text-gray-800 placeholder-gray-400 focus:outline-none focus:border-red-600 transition-colors"
+                      className="w-full bg-transparent border-b border-gray-300 pb-1.5 text-sm text-gray-800 placeholder-gray-400 focus:outline-none focus:border-[#FF6D35] transition-colors"
                     />
                   </div>
                   <div>
@@ -2255,7 +2255,7 @@ export default function InvitationForm() {
                     <input
                       type="text" name="lastName" placeholder="Last name" required
                       value={formData.lastName} onChange={handleChange}
-                      className="w-full bg-transparent border-b border-gray-300 pb-1.5 text-sm text-gray-800 placeholder-gray-400 focus:outline-none focus:border-red-600 transition-colors"
+                      className="w-full bg-transparent border-b border-gray-300 pb-1.5 text-sm text-gray-800 placeholder-gray-400 focus:outline-none focus:border-[#FF6D35] transition-colors"
                     />
                   </div>
                 </div>
@@ -2347,7 +2347,7 @@ export default function InvitationForm() {
                         <input
                           type="radio" name="tagSocials" value={opt} required
                           checked={formData.tagSocials === opt} onChange={handleChange}
-                          className="h-3.5 w-3.5 text-red-600 focus:ring-red-500"
+                          className="h-3.5 w-3.5 text-[#FF6D35] focus:ring-[#FF6D35]"
                         /> {opt}
                       </label>
                     ))}
@@ -2377,7 +2377,7 @@ export default function InvitationForm() {
                           type="checkbox"
                           checked={formData.sportingBackground.includes(opt)}
                           onChange={() => handleSportToggle(opt)}
-                          className="h-3.5 w-3.5 rounded border-gray-300 text-red-600 focus:ring-red-500"
+                          className="h-3.5 w-3.5 rounded border-gray-300 text-[#FF6D35] focus:ring-[#FF6D35]"
                         /> {opt}
                       </label>
                     ))}
@@ -2428,7 +2428,7 @@ export default function InvitationForm() {
           </div>
 
           {/* Footer with Controls (Fixed at Bottom) */}
-          <div className="p-6 md:p-8 pt-4 flex-shrink-0 border-t border-gray-100 flex justify-between items-center bg-gray-50/50">
+          <div className="p-6 md:p-4 flex-shrink-0 border-t border-gray-100 flex justify-between items-center bg-gray-50/50">
             {step > 1 ? (
               <button
                 type="button"
@@ -2442,7 +2442,7 @@ export default function InvitationForm() {
             <button
               type="submit"
               disabled={status === 'submitting'}
-              className="px-8 py-2.5 bg-red-600 text-white font-semibold text-[10px] md:text-xs uppercase tracking-widest hover:bg-red-700 transition-colors shadow-sm cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+              className="px-8 py-2.5 bg-[#FF6D35] text-white font-semibold text-[10px] md:text-xs uppercase tracking-widest hover:bg-red-700 transition-colors shadow-sm cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {step < 3 ? 'Next Step' : status === 'submitting' ? 'Submitting...' : 'Submit Form'}
             </button>

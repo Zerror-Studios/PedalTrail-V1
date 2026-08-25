@@ -219,7 +219,7 @@ export default function FeaturesGridSection() {
   };
 
   return (
-    <section className="relative text-white mb-[10vh] h-fi max-sm:mt-8 px-5 md:px-10 flex items-center mt-auto justify-center">
+    <section className="relative text-white pb-[10vh] h-fi max-sm:mt-8 px-5 md:px-10 flex items-center mt-auto justify-center">
       {/* Grid Container */}
       <div
         ref={containerRef}
@@ -233,8 +233,8 @@ export default function FeaturesGridSection() {
             onMouseLeave={() => handleMouseLeave(index)}
             className={`relative flex flex-col justify-between p-8 sm:h-[420px] max-sm:aspect-5/4 cursor-pointer will-change-transform [transform-style:preserve-3d] ${
               card.isOrange
-                ? "bg-[#ff3b00] text-white"
-                : "bg-[#161d24]/90 backdrop-blur-md border border-neutral-700/50 text-white"
+                ? "BGORG text-white"
+                : "BGBLUE backdrop-blur-md border border-neutral-700/50 text-white"
             }`}
           >
             {/* Top Section */}
@@ -246,7 +246,7 @@ export default function FeaturesGridSection() {
 
             {/* Bottom Description */}
             <div>
-              <p className="Inter text-neutral-200">{card.description}</p>
+              <p className="Inter text-white">{card.description}</p>
             </div>
           </div>
         ))}

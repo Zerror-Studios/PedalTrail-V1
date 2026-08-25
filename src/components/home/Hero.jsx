@@ -322,7 +322,7 @@ export default function Hero() {
   return (
     <div
       ref={heroRef}
-      className="w-full min-h-svh flex relative p-5 sm:p-10 overflow-hidden bg-black"
+      className="w-full min-h-svh flex relative p-5 sm:p-10 overflow-hidden bg-[#0987D8]"
     >
       {/* BG-Img Container */}
       <div
