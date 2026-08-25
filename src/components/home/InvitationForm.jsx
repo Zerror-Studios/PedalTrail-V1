@@ -21,27 +21,65 @@ const PLAYING_SINCE_OPTIONS = [
 ];
 const LEVEL_OPTIONS = ['2.0 - 2.5', '2.5 - 3.0', '3.0 - 3.5', '3.5 - 4.0', '4.0 - 4.5', '4.5 - 5.0'];
 
-const schema = z.object({
+const step1Schema = z.object({
   firstName: z.string().min(1, 'First name is required'),
   lastName: z.string().min(1, 'Last name is required'),
   gender: z.string().min(1, 'Gender is required'),
   dobMonth: z.string().min(1, 'Required').max(2, 'Invalid'),
   dobDay: z.string().min(1, 'Required').max(2, 'Invalid'),
   dobYear: z.string().min(4, 'Required').max(4, 'Invalid'),
+});
+
+const step2Schema = z.object({
   city: z.string().min(1, 'City is required'),
   phone: z.string().min(10, 'Valid phone is required'),
   email: z.string().email('Valid email is required'),
   instagram: z.string().optional(),
   tagSocials: z.string().min(1, 'Required'),
+});
+
+const step3Schema = z.object({
   profession: z.string().min(1, 'Profession is required'),
   sportingBackground: z.array(z.string()).optional(),
   sportingBackgroundOther: z.string().optional(),
   playingSince: z.string().min(1, 'Required'),
   selfLevel: z.string().min(1, 'Required'),
   acceptedTerms: z.literal(true, {
-    errorMap: () => ({ message: 'You must accept the terms' }),
+    errorMap: () => ({
+      message: 'You must accept the terms',
+    }),
   }),
 });
+
+const schema = step1Schema.merge(step2Schema).merge(step3Schema);
+
+const STEP_FIELDS = {
+  1: [
+    'firstName',
+    'lastName',
+    'gender',
+    'dobMonth',
+    'dobDay',
+    'dobYear',
+  ],
+
+  2: [
+    'city',
+    'phone',
+    'email',
+    'instagram',
+    'tagSocials',
+  ],
+
+  3: [
+    'profession',
+    'sportingBackground',
+    'sportingBackgroundOther',
+    'playingSince',
+    'selfLevel',
+    'acceptedTerms',
+  ],
+};
 
 export default function InvitationForm() {
   const [step, setStep] = useState(1);
@@ -56,6 +94,9 @@ export default function InvitationForm() {
     formState: { errors },
   } = useForm({
     resolver: zodResolver(schema),
+
+    mode: 'onSubmit',
+
     defaultValues: {
       firstName: '',
       lastName: '',
@@ -63,16 +104,19 @@ export default function InvitationForm() {
       dobMonth: '',
       dobDay: '',
       dobYear: '',
+
       city: '',
       phone: '',
       email: '',
       instagram: '',
       tagSocials: '',
+
       profession: '',
       sportingBackground: [],
       sportingBackgroundOther: '',
       playingSince: '',
       selfLevel: '',
+
       acceptedTerms: false,
     },
   });
@@ -132,7 +176,10 @@ export default function InvitationForm() {
   };
 
   const onSubmit = async (data) => {
+    if (status === 'submitting') return;
+
     setStatus('submitting');
+
     try {
       const res = await fetch('/api/form-submission', {
         method: 'POST',
@@ -154,16 +201,27 @@ export default function InvitationForm() {
   };
 
   const handleNext = async () => {
-    let fieldsToValidate = [];
-    if (step === 1) {
-      fieldsToValidate = ['firstName', 'lastName', 'gender', 'dobMonth', 'dobDay', 'dobYear'];
-    } else if (step === 2) {
-      fieldsToValidate = ['city', 'phone', 'email', 'instagram', 'tagSocials'];
+    const fields = STEP_FIELDS[step];
+
+    const isValid = await trigger(fields);
+
+    if (!isValid) {
+      return;
     }
 
-    const isStepValid = await trigger(fieldsToValidate);
-    if (isStepValid) {
-      setStep((prev) => prev + 1);
+    setStep((currentStep) => currentStep + 1);
+  };;
+
+  const onError = (errors) => {
+    for (const stepNumber of [1, 2, 3]) {
+      if (
+        STEP_FIELDS[stepNumber].some(
+          (field) => errors[field]
+        )
+      ) {
+        setStep(stepNumber);
+        return;
+      }
     }
   };
 
@@ -192,6 +250,7 @@ export default function InvitationForm() {
 
   return (
     <div
+      id='FORMDIV'
       ref={containerRef}
       className="min-h-screen bg-gray-50 flex items-center justify-center p-4 md:p-6 relative overflow-hidden"
     >
@@ -227,7 +286,7 @@ export default function InvitationForm() {
         {/* Header and Step Indicator (Fixed at Top) */}
         <div className="p-6 md:p-8 pb-4 flex-shrink-0 flex flex-col sm:flex-row justify-between items-start sm:items-center border-b border-gray-100 gap-4">
           <div>
-            <h5 className="font-bold text-[#FF6D35] mb-1 tracking-wide text-sm md:text-base">APPLY FOR AN INVITATION</h5>
+            <h5 className="font-bold text-[#FF6D35] mb-1 tracking-wide text-sm md:text-base NeueM capitalize!">APPLY FOR AN INVITATION</h5>
             <p className="text-gray-500 text-xs">Book Your Trial And Get On Court.</p>
           </div>
 
@@ -236,10 +295,9 @@ export default function InvitationForm() {
             {[1, 2, 3].map((num) => (
               <React.Fragment key={num}>
                 <div
-                  className={`flex items-center justify-center w-6 h-6 md:w-7 md:h-7 rounded-full text-[10px] md:text-xs font-bold transition-all duration-300 ${
-                    step === num ? 'bg-[#FF6D35] text-white shadow-md scale-110' :
+                  className={`flex items-center justify-center w-6 h-6 md:w-7 md:h-7 rounded-full text-[10px] md:text-xs font-bold transition-all duration-300 ${step === num ? 'bg-[#FF6D35] text-white shadow-md scale-110' :
                     step > num ? 'bg-red-100 text-[#FF6D35]' : 'bg-gray-100 text-gray-400'
-                  }`}
+                    }`}
                 >
                   {num}
                 </div>
@@ -250,7 +308,7 @@ export default function InvitationForm() {
         </div>
 
         {/* Scrollable Form Body */}
-        <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col flex-1 overflow-hidden">
+        <form onSubmit={handleSubmit(onSubmit, onError)} className="flex flex-col flex-1 overflow-hidden">
           <div className="flex-1 overflow-y-auto p-6 md:p-8 space-y-4" ref={stepContentRef}>
 
             {/* ====== STEP 1: Personal Info ====== */}
@@ -464,7 +522,7 @@ export default function InvitationForm() {
             {step > 1 ? (
               <button
                 type="button"
-                onClick={() => setStep(step - 1)}
+                onClick={() => setStep((currentStep) => currentStep - 1)}
                 className="px-4 py-2 text-[10px] md:text-xs font-semibold uppercase tracking-widest text-gray-500 hover:text-gray-800 transition-colors"
               >
                 Go Back

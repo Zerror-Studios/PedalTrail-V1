@@ -21,6 +21,13 @@ const Header = () => {
     };
   }, [isOpen]);
 
+  const handleScrollToForm = () => {
+  const formElement = document.getElementById('FORMDIV');
+  if (formElement) {
+    formElement.scrollIntoView({ behavior: 'smooth' });
+  }
+};
+
   return (
     <>
       <div className="w-full h-fit py-5 px-6 md:px-10 flex justify-between items-center fixed top-0 left-0 z-[60]">
@@ -48,7 +55,7 @@ const Header = () => {
         </div>
         
         {/* Desktop BTN */}
-        <div className="hidden md:flex w-fit h-fit gap-1.5 z-10 transition-all duration-150 ease-in group cursor-pointer">
+        <div onClick={handleScrollToForm} className="hidden md:flex w-fit h-fit gap-1.5 z-10 transition-all duration-150 ease-in group cursor-pointer">
           <div className="uppercase  h-auto w-fit px-5  text-white bg-[#FF6D35] flex justify-center items-center relative">
             <span className=" z-20 text-[0.7rem] leading-[0.7rem]"> <AnimatedTitle text={'Request An Invitation'} /> </span>
           </div>
@@ -56,7 +63,7 @@ const Header = () => {
             <img
               src="/svg/Arrow.svg"
               alt="Arrow"
-              className="h-[60%] object-center object-cover"
+              className="h-[60%] object-center object-cover -rotate-z-180"
             />
           </div>
         </div>
@@ -112,7 +119,10 @@ const Header = () => {
             isOpen ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
           }`}
           style={{ transitionDelay: isOpen ? `${NavLinks.length * 70 + 200}ms` : "0ms" }}
-          onClick={() => setIsOpen(false)}
+          onClick={() => {
+    setIsOpen(false);
+    handleScrollToForm();
+  }}
         >
           <div className="uppercase bg-[#FF6D35] flex-1 h-12 text-white flex justify-center items-center">
             <span className="text-[0.75rem]">Request An Invitation</span>

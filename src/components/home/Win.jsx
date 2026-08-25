@@ -178,7 +178,7 @@ const Win = () => {
   return (
     <div ref={containerRefON} className="w-full h-fit p-5 sm:p-8 md:p-10 max-sm:mt-10 overflow-hidden">
       <div className="w-full h-fit flex flex-col justify-center items-center text-center my-10">
-        <h3 className="NeueM uppercase">WIN YOUR WAY BACK.</h3>
+        <h3 className="NeueM  capitalize">Win your way back.</h3>
         <p className="Inter mt-5 max-w-sm ">
           The Trail is designed to seamlessly blend intense competition with
           world-class hospitality and cultural immersion.
