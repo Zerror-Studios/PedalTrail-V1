@@ -1,3 +1,4 @@
+import PasswordProtector from "@/components/common/PasswordProtector";
 import BeyondTheCourt from "@/components/home/BeyondTheCourt";
 import Hero from "@/components/home/Hero";
 import InfiniteMarqueeSection from "@/components/home/InfiniteMarqueeSection";
@@ -10,13 +11,15 @@ import { createPageMetadata } from "@/lib/seo";
 const HomePage = () => {
   return (
     <>
-    <Hero />
-    <InfiniteMarqueeSection />
-    <PadelTrail />
-    <BeyondTheCourt/>
-    <Win />
-    <InvitationForm />
-    <Lable/>
+      
+        <Hero />
+        <InfiniteMarqueeSection />
+        <PadelTrail />
+        <BeyondTheCourt />
+        <Win />
+        <InvitationForm />
+        <Lable />
+      
     </>
   );
 };
