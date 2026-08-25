@@ -380,7 +380,7 @@ const BeyondTheCourt = () => {
     >
       {/* Title Box */}
       <div ref={(el) => (itemsRef.current[0] = el)}>
-        <h3 className="uppercase NeueM">
+        <h3 className=" capitalize NeueM">
           Beyond <br /> the <br /> court
         </h3>
       </div>

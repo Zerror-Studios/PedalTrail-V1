@@ -2211,7 +2211,7 @@ export default function InvitationForm() {
         {/* Header and Step Indicator (Fixed at Top) */}
         <div className="p-6 md:p-8 pb-4 flex-shrink-0 flex flex-col sm:flex-row justify-between items-start sm:items-center border-b border-gray-100 gap-4">
           <div>
-            <h5 className="font-bold text-[#FF6D35] mb-1 tracking-wide text-sm md:text-base">APPLY FOR AN INVITATION</h5>
+            <h5 className="font-bold text-[#FF6D35] mb-1 tracking-wide text-sm md:text-base NeueM capitalize!">APPLY FOR AN INVITATION</h5>
             <p className="text-gray-500 text-xs">Book Your Trial And Get On Court.</p>
           </div>
           
