@@ -264,7 +264,7 @@ const PadelTrail = () => {
 
       {/* Middle */}
       <div className="px-6 sm:px-10 mt-10 pb-20 ">
-        <h3 className="NeueM capitalize  TXTBLUE">
+        <h3 className="NeueM capitalize  ">
           The format <br className="hidden sm:block" /> makes the  trail
         </h3>
       </div>

@@ -2175,6 +2175,7 @@ export default function InvitationForm() {
 
   return (
     <div
+    id='FORMDIV'
       ref={containerRef}
       className="min-h-screen bg-gray-50 flex items-center justify-center p-4 md:p-6 relative overflow-hidden"
     >
@@ -2442,7 +2443,7 @@ export default function InvitationForm() {
             <button
               type="submit"
               disabled={status === 'submitting'}
-              className="px-8 py-2.5 bg-[#FF6D35] text-white font-semibold text-[10px] md:text-xs uppercase tracking-widest hover:bg-red-700 transition-colors shadow-sm cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+              className="px-8 py-2.5 bg-[#FF6D35] text-white font-semibold text-[10px] md:text-xs uppercase tracking-widest hover:bg-[#f56227] transition-colors shadow-sm cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {step < 3 ? 'Next Step' : status === 'submitting' ? 'Submitting...' : 'Submit Form'}
             </button>
