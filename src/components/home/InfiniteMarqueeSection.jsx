@@ -58,8 +58,8 @@ export default function InfiniteMarqueeSection() {
           <h3 className="text-[#2e2e2e]">For Everything Else.</h3>
         </div>
         <p className="Inter font-light capitalize max-w-xl text-xs sm:text-sm text-neutral-800 leading-relaxed">
-          We Believe Padel Is More Than Just A Sport; It's A Vehicle For Connection, Travel, <br className="hidden md:block" />
-          And Unforgettable Experiences. The Trail Is Designed To Seamlessly Blend <br className="hidden md:block" />
+          We Believe Padel Is More Than Just A Sport; It's A Vehicle For Connection, Travel, 
+          And Unforgettable Experiences. The Trail Is Designed To Seamlessly Blend 
           Intense Competition With World- Class Hospitality And Cultural Immersion.
         </p>
       </div>
