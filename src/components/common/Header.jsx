@@ -2,10 +2,11 @@
 
 import { useState, useEffect } from "react";
 import AnimatedTitle from "./AnimatedTitle";
+import Link from "next/link";
 
 const NavLinks = [
   { name: `HOME`, link: `/` },
-  { name: `THE TRAIL`, link: `/` },
+  { name: `THE TRAIL`, link: `/the-trail` },
   { name: `THE EDITION`, link: `/` },
   { name: `ABOUT`, link: `/` }, 
 ];
@@ -46,9 +47,11 @@ const Header = () => {
           {
             NavLinks.map((nav, i) => {
               return (
-                <span key={i} className="text-white group relative cursor-pointer text-[0.7rem] leading-[0.7rem] ">
+                <Link key={i} href={nav.link} >
+                <span className="text-white group relative cursor-pointer text-[0.7rem] leading-[0.7rem] ">
                   <AnimatedTitle text={nav.name} />
                 </span>
+                </Link>
               )
             })
           }
