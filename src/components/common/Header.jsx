@@ -155,7 +155,8 @@ const NavLinks = [
   { name: `HOME`, link: `/` },
   { name: `THE TRAIL`, link: `/the-trail` },
   { name: `THE EDITION`, link: `/` },
-  { name: `ABOUT`, link: `/` }, 
+  { name: `ABOUT`, link: `/about` }, 
+  { name: `CONTACT`, link: `/connect` }, 
 ];
 
 const Header = () => {
@@ -178,7 +179,7 @@ const Header = () => {
   };
 
   // Determine background class based on current route
-  const headerBgClass = pathname === '/the-trail' ? 'bg-[#0987D8]' : 'bg-transparent';
+ const headerBgClass = pathname === '/the-trail' || pathname === '/connect' ? 'bg-[#0987D8]' : 'bg-transparent';
 
   return (
     <>
