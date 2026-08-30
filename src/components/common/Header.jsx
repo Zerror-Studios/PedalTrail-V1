@@ -186,13 +186,15 @@ const Header = () => {
       <div className={`w-full h-fit py-5 px-6 md:px-10 flex justify-between items-center fixed top-0 left-0 z-[60] transition-colors duration-300 ${headerBgClass}`}>
 
         {/* Logo */}
+        <Link href={`/`}>
         <div className="w-7 aspect-square z-10 cursor-pointer">
           <img
             src="/svg/logo.svg"
             alt="Ilogo"
             className="w-full h-full object-center object-cover"
-          />
+            />
         </div>
+            </Link>
 
         {/* Desktop Menu - Centered using absolute positioning */}
         <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 w-fit px-5 h-auto gap-5.5 justify-center items-center">

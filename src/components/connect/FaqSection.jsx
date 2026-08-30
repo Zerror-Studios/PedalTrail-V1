@@ -83,15 +83,15 @@ export default function FaqSection() {
   };
 
   return (
-    <div className="h-fit w-full bg-white flex justify-center py-24 px-8 md:px-16 font-sans">
+    <div className="h-fit w-full bg-white flex justify-center py-10 sm:py-24 px-5 md:px-10 font-sans">
       <div className=" w-full flex flex-col md:flex-row gap-16 md:gap-32">
         
         {/* Left Column: Title & Navigation */}
-        <div className="w-full md:w-[30%] flex flex-col">
-          <h3 className="text-5xl NeueM md:text-6xl font-serif text-[#1a1a1a]  mb-16">
+        <div className="w-full md:w-[30%] flex max-sm:justify-between sm:flex-col">
+          <h3 className="text-5xl NeueM md:text-6xl font-serif text-[#1a1a1a]  mb-10  sm:mb-16">
             FAQS
           </h3>
-          <nav className="flex flex-col space-y-6">
+          <nav className="flex flex-col space-y-2 sm:space-y-6">
             {categories.map((category) => (
               <button
                 key={category}
@@ -112,7 +112,7 @@ export default function FaqSection() {
         </div>
 
         {/* Right Column: Accordion Items */}
-        <div className="w-full md:w-[70%] flex flex-col mt-4 border-t border-[#fcdccf]">
+        <div className="w-full md:w-[70%] flex flex-col sm:mt-4 border-t border-[#fcdccf]">
           {faqData.map((faq, index) => (
             <AccordionItem
               key={index}

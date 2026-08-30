@@ -1,4 +1,13 @@
+"use client"; // Required for GSAP in Next.js App Router
+
+import { useRef } from 'react';
 import Image from 'next/image';
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+// Register GSAP plugins
+gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 const trailItems = [
   {
@@ -49,49 +58,100 @@ const trailItems = [
 ];
 
 export default function TrailDetailsSection() {
+  // GSAP Refs
+  const sectionRef = useRef(null);
+  const bgRef = useRef(null);
+  const headlineRef = useRef(null);
+
+  useGSAP(() => {
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: sectionRef.current,
+        start: "top 75%", // Triggers when the top of the section reaches 75% down the viewport
+        once: true, // Animation only plays once
+      }
+    });
+
+    // 1. Background subtly zooms into resting state
+    tl.fromTo(
+      bgRef.current,
+      { scale: 1.6, opacity: 0 },
+      { scale: 1.5, opacity: 1, duration: 1.5, ease: 'power3.out' }
+    )
+    // 2. Headline slides up and fades in
+    .fromTo(
+      headlineRef.current,
+      { y: 40, opacity: 0 },
+      { y: 0, opacity: 1, duration: 1, ease: 'power3.out' },
+      "-=1" // Overlap with background animation
+    )
+    // 3. List items cascade in one by one using a class selector and stagger
+    .fromTo(
+      '.trail-item',
+      { y: 30, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.8, stagger: 0.15, ease: 'power3.out' },
+      "-=0.6" // Overlap with headline
+    );
+  }, { scope: sectionRef });
+
   return (
-    <section className="relative w-full min-h-screen py-24 md:py-32 px-6 lg:px-10 overflow-hidden flex justify-center">
+    <section 
+      ref={sectionRef} 
+      className="relative w-full min-h-[100dvh] py-20 md:py-32 px-5 lg:px-12 overflow-hidden flex justify-center bg-[#bd4d18]" // Added a fallback background color
+    >
       
       {/* Background Image Layer */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         <Image
+          ref={bgRef}
           src="/images/the-trail/BG_11.png"
           alt="Orange textured background with shadows"
           fill
           className="object-cover object-center scale-[1.5]"
           priority
         />
+        {/* Optional: Add a dark overlay gradient if text readability ever becomes an issue */}
+        <div className="absolute inset-0 bg-black/10 mix-blend-multiply" />
       </div>
 
       {/* Content Overlay */}
-      <div className="relative z-10 w-full  flex flex-col">
+      {/* Added max-w-7xl and mx-auto so content doesn't stretch infinitely on huge monitors */}
+      <div className="relative z-10 w-full  mx-auto flex flex-col justify-center px-5">
         
         {/* Headline */}
-        <h4 className="NeueM text-white text-4xl md:text-5xl lg:text-[4rem] leading-[1.1] mb-16 md:mb-24">
+        <h3 
+          ref={headlineRef}
+          // Changed static sizes to clamp() for smooth mobile-to-desktop scaling
+          className="NeueM text-white text-[clamp(2.5rem,6vw,4.5rem)] leading-[1.1] mb-12 md:mb-20 max-w-3xl"
+        >
           The Game Is Only<br />
           Part Of Trail
-        </h4>
+        </h3>
 
-        {/* List Items */}
-        <div className="flex flex-col border-b-2 border-white">
+        {/* List Items Container */}
+        {/* Lowered border opacity slightly to white/30 so it looks more elegant against the background */}
+        <div className="flex flex-col border-b border-white/40">
           {trailItems.map((item, index) => (
             <div 
               key={index} 
-              className="flex flex-col md:flex-row md:items-center py-10 md:py-8 border-t-2 border-white gap-6 md:gap-12"
+              // Added "trail-item" class to target them easily with GSAP
+              className="trail-item flex flex-col md:flex-row md:items-center py-8 md:py-10 border-t border-white/40 gap-4 md:gap-12"
             >
               {/* Icon and Title (Left Column) */}
-              <div className="flex items-center gap-6 md:w-[35%] shrink-0">
-                <div className="w-12 h-12 rounded-full border border-white/80 flex items-center justify-center text-white shrink-0">
+              <div className="flex items-center gap-5 md:w-[40%] lg:w-[35%] shrink-0">
+                {/* Ensure icon wrapper doesn't shrink on mobile */}
+                <div className="w-12 h-12 rounded-full border border-white/60 flex items-center justify-center text-white shrink-0">
                   {item.icon}
                 </div>
-                <h5 className="NeueM  text-white text-xl md:text-2xl tracking-wide">
+                <h5 className="NeueM text-white text-xl md:text-2xl lg:text-3xl tracking-wide">
                   {item.title}
                 </h5>
               </div>
 
               {/* Description (Right Column) */}
-              <div className="md:w-[65%]">
-                <p className=" text-white text-sm md:text-base opacity-95">
+              <div className="md:w-[60%] lg:w-[65%] pl-[68px] md:pl-0">
+                {/* On mobile, added left padding (pl-[68px]) so text aligns nicely with the title, bypassing the icon */}
+                <p className="text-white/90 text-[15px] md:text-base lg:text-lg leading-[1.6]">
                   {item.description}
                 </p>
               </div>

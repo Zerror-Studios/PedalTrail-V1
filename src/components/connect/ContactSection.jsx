@@ -1,23 +1,73 @@
-import React from 'react';
+"use client"; // Required for GSAP hooks in Next.js App Router
+
+import { useRef } from 'react';
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+// Register GSAP plugins
+gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 export default function ContactSection() {
+  const sectionRef = useRef(null);
+  const headingRef = useRef(null);
+
+  // GSAP ScrollTrigger Animation
+  useGSAP(() => {
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: sectionRef.current,
+        start: "top 80%", // Triggers when section is 80% visible
+        once: true,
+      }
+    });
+
+    // 1. Heading slide up
+    tl.fromTo(
+      headingRef.current,
+      { y: 50, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.8, ease: "power3.out" }
+    )
+    // 2. Form fields staggered reveal
+    .fromTo(
+      ".contact-form-item",
+      { y: 30, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.6, stagger: 0.1, ease: "power3.out" },
+      "-=0.4"
+    )
+    // 3. Right column contact details staggered reveal
+    .fromTo(
+      ".contact-detail-item",
+      { x: 30, opacity: 0 },
+      { x: 0, opacity: 1, duration: 0.6, stagger: 0.15, ease: "power3.out" },
+      "-=0.6"
+    );
+  }, { scope: sectionRef });
+
   return (
-    <section className="w-full bg-white py-20 md:py-32 px-6 lg:px-20 font-sans">
-      <div className=" mx-auto flex flex-col lg:flex-row gap-16 lg:gap-32">
+    <section 
+      ref={sectionRef}
+      className="w-full bg-white py-16 sm:py-24 md:py-32 px-5 sm:px-10 md:px-10 lg:px-10 font-sans overflow-hidden"
+    >
+      <div className=" mx-auto flex flex-col lg:flex-row gap-12 lg:gap-24 xl:gap-32">
         
         {/* Left Column: Form Section */}
         <div className="flex-1">
-          <h2 className="NeueM text-5xl md:text-6xl lg:text-[4.5rem] tracking-tight uppercase text-[#1C1C1A] mb-12">
+          <h3 
+            ref={headingRef}
+            // Used clamp() for fluid scaling between mobile and desktop sizes
+            className="NeueM text-[clamp(3rem,8vw,4.5rem)] leading-[1.1] tracking-tight uppercase text-[#1C1C1A] mb-8 md:mb-12"
+          >
             Get in touch
-          </h2>
+          </h3>
 
-          <form className="flex flex-col gap-6" >
+          <form className="flex flex-col gap-4 sm:gap-6" onSubmit={(e) => e.preventDefault()}>
             
             {/* Row 1: Name and Email */}
-            <div className="flex flex-col md:flex-row gap-6">
+            <div className="flex flex-col md:flex-row gap-4 sm:gap-6">
               {/* Name Input */}
-              <div className="flex-1 border border-gray-200 p-4 flex flex-col justify-center focus-within:border-gray-400 transition-colors">
-                <label htmlFor="name" className="text-sm NeueM font-semibold text-gray-800 mb-1">
+              <div className="contact-form-item flex-1 border border-gray-200 p-4 flex flex-col justify-center focus-within:border-gray-400 transition-colors">
+                <label htmlFor="name" className="text-xs sm:text-sm NeueM font-semibold text-gray-800 mb-1">
                   Name
                 </label>
                 <input 
@@ -29,8 +79,8 @@ export default function ContactSection() {
               </div>
 
               {/* Email Input */}
-              <div className="flex-1 border border-gray-200 p-4 flex flex-col justify-center focus-within:border-gray-400 transition-colors">
-                <label htmlFor="email" className="text-sm NeueM font-semibold text-gray-800 mb-1">
+              <div className="contact-form-item flex-1 border border-gray-200 p-4 flex flex-col justify-center focus-within:border-gray-400 transition-colors">
+                <label htmlFor="email" className="text-xs sm:text-sm NeueM font-semibold text-gray-800 mb-1">
                   Email
                 </label>
                 <input 
@@ -43,8 +93,8 @@ export default function ContactSection() {
             </div>
 
             {/* Row 2: Select Enquiry */}
-            <div className="relative border border-gray-200 p-4 flex flex-col justify-center focus-within:border-gray-400 transition-colors cursor-pointer">
-              <label htmlFor="enquiry" className="text-sm NeueM font-semibold text-gray-800 mb-1 cursor-pointer">
+            <div className="contact-form-item relative border border-gray-200 p-4 flex flex-col justify-center focus-within:border-gray-400 transition-colors cursor-pointer">
+              <label htmlFor="enquiry" className="text-xs sm:text-sm NeueM font-semibold text-gray-800 mb-1 cursor-pointer">
                 What can we help you with?
               </label>
               <select 
@@ -66,8 +116,8 @@ export default function ContactSection() {
             </div>
 
             {/* Row 3: Textarea */}
-            <div className="border border-gray-200 p-4 flex flex-col focus-within:border-gray-400 transition-colors">
-              <label htmlFor="message" className="text-sm NeueM font-semibold text-gray-800 mb-1">
+            <div className="contact-form-item border border-gray-200 p-4 flex flex-col focus-within:border-gray-400 transition-colors">
+              <label htmlFor="message" className="text-xs sm:text-sm NeueM font-semibold text-gray-800 mb-1">
                 Your message
               </label>
               <textarea 
@@ -79,15 +129,15 @@ export default function ContactSection() {
             </div>
 
             {/* Submit Button & Helper Text */}
-            <div className="mt-2 flex flex-col items-start gap-4">
+            <div className="contact-form-item mt-2 flex flex-col items-start gap-3 sm:gap-4">
               <button 
                 type="submit"
-                className="bg-[#FF6000] text-white text-[11px] md:text-xs  uppercase tracking-wide py-3 px-8 hover:bg-[#e55600] transition-colors"
+                className="w-full sm:w-auto bg-[#FF6000] text-white text-[11px] md:text-xs uppercase tracking-wide py-4 sm:py-3 px-8 hover:bg-[#e55600] transition-colors font-medium"
               >
-                <span>Send Enquiry </span>
+                <span>Send Enquiry</span>
               </button>
-              <p className=" text-gray-500">
-                We'll get back to you as soon as we can.
+              <p className="text-xs sm:text-sm text-gray-500">
+                We&apos;ll get back to you as soon as we can.
               </p>
             </div>
             
@@ -95,34 +145,35 @@ export default function ContactSection() {
         </div>
 
         {/* Right Column: Contact Details */}
-        <div className="w-full lg:w-[30%] flex flex-col gap-10 lg:pt-28">
+        {/* Adjusted padding to align nicely with the first input field on desktop */}
+        <div className="w-full lg:w-[30%] flex flex-col gap-8 sm:gap-10 lg:pt-[5.5rem]">
           
           {/* Email Info */}
-          <div className="flex flex-col gap-1">
-            <span className="text-[10px] md:text-sm NeueM font-semibold text-black uppercase tracking-widest">
+          <div className="contact-detail-item flex flex-col gap-1">
+            <span className="text-[10px] sm:text-xs md:text-sm NeueM font-semibold text-black uppercase tracking-widest">
               Email
             </span>
-            <a href="mailto:hello@thepadeltrail.com" className="text-lg md:text-xl text-gray-800 hover:text-[#FF6000] transition-colors">
+            <a href="mailto:hello@thepadeltrail.com" className="text-base sm:text-lg md:text-xl text-gray-800 hover:text-[#FF6000] transition-colors">
               hello@thepadeltrail.com
             </a>
           </div>
 
           {/* Location Info */}
-          <div className="flex flex-col gap-1">
-            <span className="text-[10px] md:text-sm NeueM font-semibold text-black uppercase tracking-widest">
+          <div className="contact-detail-item flex flex-col gap-1">
+            <span className="text-[10px] sm:text-xs md:text-sm NeueM font-semibold text-black uppercase tracking-widest">
               Location
             </span>
-             <a href="#" className="text-lg md:text-xl text-gray-800 hover:text-[#FF6000] transition-colors">
+             <a href="#" className="text-base sm:text-lg md:text-xl text-gray-800 hover:text-[#FF6000] transition-colors">
               Madrid, Spain
             </a>
           </div>
 
           {/* Instagram Info */}
-          <div className="flex flex-col gap-1">
-            <span className="text-[10px] md:text-sm NeueM font-semibold text-black uppercase tracking-widest">
+          <div className="contact-detail-item flex flex-col gap-1">
+            <span className="text-[10px] sm:text-xs md:text-sm NeueM font-semibold text-black uppercase tracking-widest">
               Instagram
             </span>
-            <a href="#" className="text-lg md:text-xl text-gray-800 hover:text-[#FF6000] transition-colors">
+            <a href="#" className="text-base sm:text-lg md:text-xl text-gray-800 hover:text-[#FF6000] transition-colors">
               @thepadeltrail
             </a>
           </div>
