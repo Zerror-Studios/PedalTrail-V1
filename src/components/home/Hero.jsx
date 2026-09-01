@@ -15,6 +15,16 @@ export default function Hero() {
   // States: 'initial', 'playing', 'ended'
   const [introState, setIntroState] = useState("initial");
   const [isMuted, setIsMuted] = useState(false);
+  const [timeLeft, setTimeLeft] = useState(0);
+
+  const handleTimeUpdate = () => {
+    if (videoRef.current) {
+      const remaining = videoRef.current.duration - videoRef.current.currentTime;
+      if (!isNaN(remaining)) {
+        setTimeLeft(Math.ceil(remaining));
+      }
+    }
+  };
 
   useEffect(() => {
     let lenisCheckInterval;
@@ -165,21 +175,36 @@ export default function Hero() {
           className="w-full h-full object-cover object-center origin-center"
           playsInline
           onEnded={handleVideoEnded}
+          onTimeUpdate={handleTimeUpdate}
+          onLoadedMetadata={handleTimeUpdate}
         />
       </div>
 
-      {/* Mute/Unmute Toggle */}
+      {/* Controls: Skip & Mute */}
       {introState === "playing" && (
-        <button
-          onClick={toggleMute}
-          className="absolute bottom-5 right-10 sm:bottom-10 sm:right-10 z-50 text-white bg-black/30 backdrop-blur-sm p-3 rounded-full hover:bg-white/20 transition-all duration-300 flex items-center justify-center cursor-pointer"
-        >
-          {isMuted ? (
-            <RiVolumeMuteLine size={24} />
-          ) : (
-            <RiVolumeUpLine size={24} />
-          )}
-        </button>
+        <div className="absolute bottom-5 right-10 sm:bottom-10 sm:right-10 z-50 flex items-center gap-3">
+          <button
+            onClick={handleSkip}
+            className="flex items-center gap-2 text-white bg-black/30 backdrop-blur-sm px-5 py-3 rounded-full hover:bg-white/20 transition-all duration-300 cursor-pointer text-xs sm:text-sm tracking-wider uppercase Inter"
+          >
+            <span>Skip</span>
+            <span className="opacity-60">|</span>
+            <span className="opacity-80 font-mono">
+              {Math.floor(timeLeft / 60)}:{(timeLeft % 60).toString().padStart(2, '0')}
+            </span>
+          </button>
+
+          <button
+            onClick={toggleMute}
+            className="text-white bg-black/30 backdrop-blur-sm p-3 rounded-full hover:bg-white/20 transition-all duration-300 flex items-center justify-center cursor-pointer"
+          >
+            {isMuted ? (
+              <RiVolumeMuteLine size={20} className="sm:w-6 sm:h-6" />
+            ) : (
+              <RiVolumeUpLine size={20} className="sm:w-6 sm:h-6" />
+            )}
+          </button>
+        </div>
       )}
 
       {/* Initial Intro Overlay */}
@@ -210,12 +235,6 @@ export default function Hero() {
               Sound Off
             </button>
           </div>
-          <button
-            onClick={handleSkip}
-            className="w-48 sm:w-auto px-8 py-3 bg-transparent text-white/60 Inter text-[0.8rem] uppercase tracking-wider hover:text-white transition-colors duration-300 underline underline-offset-4 cursor-pointer"
-          >
-            Skip
-          </button>
         </div>
       </div>
 
