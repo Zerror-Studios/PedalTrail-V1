@@ -281,7 +281,7 @@ export default function InvitationForm() {
       {/* Form Container: Now strictly 80vh and a flex column */}
       <div
         ref={formBoxRef}
-        className="relative z-10 w-full max-w-2xl bg-white/10 backdrop-blur-sm border border-gray-200 opacity-0 rounded-sm flex flex-col h-fit"
+        className="relative z-10 w-full max-w-[35rem] bg-white/10 backdrop-blur-sm  opacity-0 rounded-sm flex flex-col h-fit"
       >
         {/* Header and Step Indicator (Fixed at Top) */}
         <div className="p-6 md:p-8 pb-4 flex-shrink-0 flex flex-col sm:flex-row justify-between items-start sm:items-center border-b border-gray-100 gap-4">
@@ -290,20 +290,31 @@ export default function InvitationForm() {
             <p className="text-gray-500 text-xs">Book Your Trial And Get On Court.</p>
           </div>
 
-          {/* 1 - 2 - 3 Animated Tracker */}
-          <div className="flex items-center space-x-2">
-            {[1, 2, 3].map((num) => (
-              <React.Fragment key={num}>
-                <div
-                  className={`flex items-center justify-center w-6 h-6 md:w-7 md:h-7 rounded-full text-[10px] md:text-xs font-bold transition-all duration-300 ${step === num ? 'bg-[#FF6D35] text-white shadow-md scale-110' :
-                    step > num ? 'bg-red-100 text-[#FF6D35]' : 'bg-gray-100 text-gray-400'
-                    }`}
-                >
-                  {num}
+          {/* Animated Tracker */}
+          <div className="flex items-center transition-all duration-300">
+            {step === 1 && (
+              <div className="flex">
+                <div className="w-5 h-5 md:w-6 md:h-6 rounded-full bg-[#FF6D35]"></div>
+              </div>
+            )}
+            {step === 2 && (
+              <div className="flex -space-x-2">
+                <div className="w-5 h-5 md:w-6 md:h-6 rounded-full bg-[#FF6D35]"></div>
+                <div className="w-5 h-5 md:w-6 md:h-6 rounded-full bg-[#FF6D35] relative z-10"></div>
+              </div>
+            )}
+            {step === 3 && (
+              <div className="flex -space-x-2">
+                <div className="w-5 h-5 md:w-6 md:h-6 rounded-full bg-[#FF6D35]"></div>
+                <div className="w-5 h-5 md:w-6 md:h-6 rounded-full bg-[#FF6D35] relative z-10"></div>
+                <div className="w-5 h-5 md:w-6 md:h-6 rounded-full border-[1.5px] border-[#FF6D35] bg-white relative z-20 flex items-center justify-center p-[1px]">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="#FF6D35" strokeWidth="1.5" strokeLinecap="round" className="w-full h-full transform -rotate-45">
+                    <path d="M 6 2 C 11 7, 11 17, 6 22" />
+                    <path d="M 18 2 C 13 7, 13 17, 18 22" />
+                  </svg>
                 </div>
-                {num < 3 && <div className={`w-4 md:w-6 h-[2px] transition-colors duration-300 ${step > num ? 'bg-red-200' : 'bg-gray-100'}`} />}
-              </React.Fragment>
-            ))}
+              </div>
+            )}
           </div>
         </div>
 

@@ -26,7 +26,7 @@ export default function PasswordProtector({ children }) {
   }
 
   return (
-    <main className="min-h-svh w-full overflow-hidden bg-[ECF8FF] text-white relative">
+    <main className="min-h-svh w-full overflow-hidden bg-[ECF8FF] text-white relative z-9999">
       <img
         src="/images/home/HeroBG.png"
         alt=""

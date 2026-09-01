@@ -12,16 +12,16 @@ import { createPageMetadata } from "@/lib/seo";
 const HomePage = () => {
   return (
     <>
-      
-        <Hero />
-        <InfiniteMarqueeSection />
-        <PadelTrail />
-        <BeyondTheCourt />
-        <Win />
-        <InvitationForm />
-        {/* <Lable /> */}
-        <DetailSection />
-      
+
+      <Hero />
+      <InfiniteMarqueeSection />
+      <PadelTrail />
+      <BeyondTheCourt />
+      <Win />
+      <InvitationForm />
+      {/* <Lable /> */}
+      <DetailSection />
+
     </>
   );
 };
